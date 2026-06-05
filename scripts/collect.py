@@ -28,21 +28,20 @@ SESSION.headers["User-Agent"] = "crypto-balance-tracker/1.0"
 # ── TRC20 ──────────────────────────────────────────────────────────────────────
 
 def get_trc_usdt(address: str) -> float | None:
-    """Return USDT balance on TRON (TRC20) via TronGrid API."""
+    """Return USDT balance on TRON (TRC20) via TronGrid account endpoint."""
     try:
-        # TronGrid REST API — more reliable than TronScan
-        url = f"https://api.trongrid.io/v1/accounts/{address}/tokens"
-        params = {"token_id": USDT_TRC20, "limit": 1}
+        url = f"https://api.trongrid.io/v1/accounts/{address}"
         headers = {"Accept": "application/json"}
         if TRONGRID_API_KEY:
             headers["TRON-PRO-API-KEY"] = TRONGRID_API_KEY
-        r = SESSION.get(url, params=params, headers=headers, timeout=15)
+        r = SESSION.get(url, headers=headers, timeout=15)
         r.raise_for_status()
         data = r.json()
-        items = data.get("data", [])
-        if items:
-            bal = int(items[0].get("balance", 0))
-            return bal / 1_000_000  # USDT TRC20 has 6 decimals
+        # trc20 is a list of {contract_address: balance_str} dicts
+        for item in data.get("data", [{}])[0].get("trc20", []):
+            if USDT_TRC20.lower() in (k.lower() for k in item):
+                key = next(k for k in item if k.lower() == USDT_TRC20.lower())
+                return int(item[key]) / 1_000_000
         return 0.0
     except Exception as e:
         print(f"  TRC USDT error for {address}: {e}", file=sys.stderr)
