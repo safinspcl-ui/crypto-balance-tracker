@@ -1,0 +1,37 @@
+{
+  "wallets": [
+    { "id": "trc_01", "label": "TRC #1",  "trc": "TLHZzn9hNM4mbNMQrzG2mRYJJozr7iLHop", "erc": "" },
+    { "id": "trc_02", "label": "TRC #2",  "trc": "TDqCXTvZVMFcDTgXjhQZYfKfVnvJBRq3qp", "erc": "" },
+    { "id": "trc_03", "label": "TRC #3",  "trc": "TMU15JwuJbpA3PvGVcdGYt54pkVmdrM61w",  "erc": "" },
+    { "id": "trc_04", "label": "TRC #4",  "trc": "TEBXqjSvxDaZfD48RPEv36NW3VUoHERMkk", "erc": "" },
+    { "id": "trc_05", "label": "TRC #5",  "trc": "TPGHFdtdRLP6VLXKBgth9G5pUbZNoGqgrc", "erc": "" },
+    { "id": "trc_06", "label": "TRC #6",  "trc": "TQY5HZw1bXAD8yP4LzFxJY5swon9LvJVbD", "erc": "" },
+    { "id": "trc_07", "label": "TRC #7",  "trc": "TGDXj4ZupTumjPvqtaKvXcDkmbw8BCD1sh", "erc": "" },
+    { "id": "trc_08", "label": "TRC #8",  "trc": "TYCRLDYSei3JbJpcyJn9FDAmi1JVzfywiG", "erc": "" },
+    { "id": "trc_09", "label": "TRC #9",  "trc": "TCto9LAWtAn4Q5GiGXsk6t8kUfczNgd9xX", "erc": "" },
+    { "id": "trc_10", "label": "TRC #10", "trc": "TLhfqos474tTAwCWn33GonPyj9TRpRQ997", "erc": "" },
+    { "id": "trc_11", "label": "TRC #11", "trc": "TQbUqZSZGscbYUsbcF99ZoDFdiQLsXxvTm", "erc": "" },
+    { "id": "trc_12", "label": "TRC #12", "trc": "TC5mabQddVBNHDQk6fBzLaAp9oXfVCjF71", "erc": "" },
+    { "id": "trc_13", "label": "TRC #13", "trc": "TFjyQw4BJsge4nnPhtHMqpFoChowEcTc2g", "erc": "" },
+    { "id": "trc_14", "label": "TRC #14", "trc": "TSd8wPnfKrxRjQ49WNwj9awEH4RoW3JtCf", "erc": "" },
+    { "id": "trc_15", "label": "TRC #15", "trc": "TAPZ5SLbGWu5G9krbqK81HXoZpSmJ7eoRS", "erc": "" },
+    { "id": "trc_16", "label": "TRC #16", "trc": "TVQFWb8p9jZGg1pEBQ8M8mYD95HwAruzaZ", "erc": "" },
+    { "id": "trc_17", "label": "TRC #17", "trc": "TWF5LbM1fJktmDs2e563QWL3ouDNi4Wm5P", "erc": "" },
+    { "id": "trc_18", "label": "TRC #18", "trc": "TKYPAyB5fQoHwfXLEEt6yDEaLGeAzd5LRS", "erc": "" },
+    { "id": "trc_19", "label": "TRC #19", "trc": "THSv9tbop8K8JHrDrQCwieEnn3qzR33kb3", "erc": "" },
+    { "id": "trc_20", "label": "TRC #20", "trc": "TMJJCdxvw8woPXrPpsmLBaYf1X2txqGeHm", "erc": "" },
+    { "id": "trc_21", "label": "TRC #21", "trc": "TS5Rivwscmp912j5NtHnH45wQy6xSnGDjL",  "erc": "" },
+
+    { "id": "erc_01", "label": "ERC #1",  "trc": "", "erc": "0xF012642Bc0236f8449a2539eB1a2724A011c5315" },
+    { "id": "erc_02", "label": "ERC #2",  "trc": "", "erc": "0x19Fa4171fB3eAA85D645282467714989767F07EC" },
+    { "id": "erc_03", "label": "ERC #3",  "trc": "", "erc": "0xdb866d7D40242589EFf79ad2854e980b613ceE79" },
+    { "id": "erc_04", "label": "ERC #4",  "trc": "", "erc": "0xb74468D80E622333D47B79268a7F81e0C0CBEEd9" },
+    { "id": "erc_05", "label": "ERC #5",  "trc": "", "erc": "0xDbbf9ad0B3aa50764F12c6937c30E5A3C67aEc45" },
+    { "id": "erc_06", "label": "ERC #6",  "trc": "", "erc": "0xf6F078965fF8FBB86BCE68671Abb9b9dDCB3F831" },
+    { "id": "erc_07", "label": "ERC #7",  "trc": "", "erc": "0x24Fbeb082E60B3bF24Ff8F08dA211b95D3d92d6B" },
+    { "id": "erc_08", "label": "ERC #8",  "trc": "", "erc": "0xc8816DDe4D9eb9d742FdAC42732302ffA6A394fD" },
+    { "id": "erc_09", "label": "ERC #9",  "trc": "", "erc": "0x7476da8A4ACa135B2619e115D573C4c4fDcF1338" },
+    { "id": "erc_10", "label": "ERC #10", "trc": "", "erc": "0xAA0adA6E9a206b7Dd6639dA7f5b43a2f47e77EE0" },
+    { "id": "erc_11", "label": "ERC #11", "trc": "", "erc": "0x8a0De4384CfC38977B65a6FFd5A5874ff69a5bF0" }
+  ]
+}

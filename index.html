@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Balance Tracker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0d1117;
+      --surface: #161b22;
+      --border:  #30363d;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --accent:  #58a6ff;
+      --green:   #3fb950;
+      --red:     #f85149;
+      --usdt:    #26a17b;
+      --usdc:    #2775ca;
+      --eth:     #627eea;
+      --tron:    #ff3e3e;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    header h1 { font-size: 17px; font-weight: 600; letter-spacing: .3px; }
+
+    .update-info {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .3; }
+    }
+
+    /* ── Totals bar ── */
+    .totals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .total-chip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .total-chip .tc-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .total-chip .tc-val   { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    /* ── Table ── */
+    .table-wrap {
+      padding: 20px 28px 40px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead tr {
+      background: var(--surface);
+    }
+    th {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    th:last-child { text-align: right; }
+
+    tbody tr {
+      border-bottom: 1px solid #21262d;
+      transition: background .1s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #1c2128; }
+
+    td {
+      padding: 11px 14px;
+      vertical-align: middle;
+    }
+    td:last-child {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* wallet column */
+    .td-wallet {
+      font-weight: 500;
+      max-width: 180px;
+    }
+    .td-addr {
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      word-break: break-all;
+    }
+
+    /* chain badge */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      white-space: nowrap;
+    }
+    .badge-trc { background: #2a1010; color: var(--tron); border: 1px solid #5a1a1a; }
+    .badge-erc { background: #101828; color: var(--eth);  border: 1px solid #1e3260; }
+
+    /* coin badge */
+    .coin {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .coin-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .coin-usdt .coin-dot { background: var(--usdt); }
+    .coin-usdc .coin-dot { background: var(--usdc); }
+    .coin-eth  .coin-dot { background: var(--eth);  }
+
+    .val-zero  { color: var(--muted); font-weight: 400; }
+    .val-err   { color: var(--red);   font-size: 11px; font-weight: 400; }
+    .val-pos   { color: var(--text); }
+
+    /* empty / loading */
+    .state-msg {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+    }
+    .state-msg h2 { font-size: 16px; margin-bottom: 8px; }
+    .state-msg p  { font-size: 13px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💰 Crypto Balance Tracker</h1>
+  <div class="update-info">
+    <span class="dot"></span>
+    <span id="updateTime">загрузка...</span>
+  </div>
+</header>
+
+<div class="totals" id="totals"></div>
+
+<div class="table-wrap">
+  <table id="mainTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Кошелёк</th>
+        <th>Блокчейн</th>
+        <th>Монета</th>
+        <th>Кол-во</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <tr><td colspan="5"><div class="state-msg"><h2>Загрузка...</h2></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+const fmt = (n, d = 2) => {
+  if (n == null) return null;
+  const v = Number(n);
+  if (isNaN(v)) return null;
+  return v.toLocaleString("ru-RU", { minimumFractionDigits: 0, maximumFractionDigits: d });
+};
+
+async function fetchJson(url) {
+  const r = await fetch(url + "?_=" + Date.now());
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}
+
+async function init() {
+  // Load latest date
+  let dates = [];
+  try {
+    const idx = await fetchJson("data/index.json");
+    dates = idx.dates || [];
+  } catch (_) {}
+
+  if (!dates.length) {
+    renderEmpty();
+    return;
+  }
+
+  const latestDate = dates[0];
+
+  // Load snapshot + wallets config in parallel
+  let snap, walletsCfg;
+  try {
+    [snap, walletsCfg] = await Promise.all([
+      fetchJson(`data/history/${latestDate}.json`),
+      fetchJson("wallets.json"),
+    ]);
+  } catch (e) {
+    renderEmpty("Ошибка загрузки данных: " + e.message);
+    return;
+  }
+
+  // Build label map from wallets.json
+  const labelMap = {};
+  for (const w of walletsCfg.wallets || []) {
+    labelMap[w.id] = w.label;
+  }
+
+  // Update time display
+  const ts = snap.timestamp || snap.date + "T00:00:00Z";
+  const d = new Date(ts);
+  document.getElementById("updateTime").textContent =
+    "Обновлено: " + d.toLocaleString("ru-RU", { timeZone: "UTC" }) + " UTC";
+
+  // Build rows
+  const rows = [];
+  let totalTrcUsdt = 0, totalErcEth = 0, totalErcUsdt = 0, totalErcUsdc = 0;
+
+  for (const w of snap.wallets || []) {
+    const label = labelMap[w.id] || w.label || w.id;
+
+    if (w.trc?.address) {
+      rows.push({
+        label,
+        addr:  w.trc.address,
+        chain: "TRC20",
+        coin:  "USDT",
+        val:   w.trc.USDT,
+      });
+      totalTrcUsdt += w.trc.USDT ?? 0;
+    }
+
+    if (w.erc?.address) {
+      rows.push({ label, addr: w.erc.address, chain: "ERC20", coin: "ETH",  val: w.erc.ETH  });
+      rows.push({ label, addr: w.erc.address, chain: "ERC20", coin: "USDT", val: w.erc.USDT });
+      rows.push({ label, addr: w.erc.address, chain: "ERC20", coin: "USDC", val: w.erc.USDC });
+      totalErcEth  += w.erc.ETH  ?? 0;
+      totalErcUsdt += w.erc.USDT ?? 0;
+      totalErcUsdc += w.erc.USDC ?? 0;
+    }
+  }
+
+  // Totals bar
+  document.getElementById("totals").innerHTML = [
+    { label: "USDT TRC20",  val: fmt(totalTrcUsdt),  unit: "USDT" },
+    { label: "ETH ERC20",   val: fmt(totalErcEth, 4), unit: "ETH"  },
+    { label: "USDT ERC20",  val: fmt(totalErcUsdt),  unit: "USDT" },
+    { label: "USDC ERC20",  val: fmt(totalErcUsdc),  unit: "USDC" },
+  ].map(t => `
+    <div class="total-chip">
+      <div class="tc-label">${t.label}</div>
+      <div class="tc-val">${t.val ?? "—"} <span style="font-size:12px;color:var(--muted);font-weight:400">${t.unit}</span></div>
+    </div>
+  `).join("");
+
+  // Table rows
+  const coinClass = { USDT: "coin-usdt", USDC: "coin-usdc", ETH: "coin-eth" };
+  const shortAddr = a => a ? a.slice(0, 8) + "…" + a.slice(-6) : "";
+
+  document.getElementById("tbody").innerHTML = rows.map((r, i) => {
+    const fval = r.val == null ? null : fmt(r.val, r.coin === "ETH" ? 6 : 2);
+    const valHtml = r.val == null
+      ? `<span class="val-err">ошибка</span>`
+      : r.val === 0
+        ? `<span class="val-zero">0</span>`
+        : `<span class="val-pos">${fval}</span>`;
+
+    return `<tr>
+      <td style="color:var(--muted);width:36px">${i + 1}</td>
+      <td class="td-wallet">
+        <div>${escHtml(r.label)}</div>
+        <div class="td-addr">${shortAddr(r.addr)}</div>
+      </td>
+      <td><span class="badge badge-${r.chain === "TRC20" ? "trc" : "erc"}">${r.chain}</span></td>
+      <td><span class="coin ${coinClass[r.coin] || ""}"><span class="coin-dot"></span>${r.coin}</span></td>
+      <td>${valHtml}</td>
+    </tr>`;
+  }).join("");
+}
+
+function renderEmpty(msg) {
+  document.getElementById("tbody").innerHTML = `
+    <tr><td colspan="5">
+      <div class="state-msg">
+        <h2>Данных пока нет</h2>
+        <p>${msg || "Запустите <strong>GitHub Actions → Collect Balances → Run workflow</strong>"}</p>
+      </div>
+    </td></tr>`;
+  document.getElementById("totals").innerHTML = "";
+  document.getElementById("updateTime").textContent = "нет данных";
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+init();
+</script>
+</body>
+</html>

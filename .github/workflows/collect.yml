@@ -1,0 +1,39 @@
+name: Collect Balances
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 00:00 UTC every day
+  workflow_dispatch:        # allow manual run from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Collect balances
+        env:
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+          TRONGRID_API_KEY: ${{ secrets.TRONGRID_API_KEY }}
+        run: python scripts/collect.py
+
+      - name: Commit data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && echo "No changes" || \
+            git commit -m "chore: balance snapshot $(date -u +%Y-%m-%d)"
+          git push
