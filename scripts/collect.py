@@ -72,9 +72,10 @@ def get_trc_usdt(address: str) -> float | None:
 # ── ERC20 ─────────────────────────────────────────────────────────────────────
 
 def etherscan_get(params: dict) -> dict | None:
-    """Call Etherscan API with retry."""
-    base = "https://api.etherscan.io/api"
+    """Call Etherscan API V2 with retry."""
+    base = "https://api.etherscan.io/v2/api"
     params["apikey"] = ETHERSCAN_API_KEY
+    params["chainid"] = "1"  # Ethereum mainnet
     for attempt in range(3):
         try:
             r = SESSION.get(base, params=params, timeout=15)
