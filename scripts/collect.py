@@ -28,7 +28,8 @@ SESSION.headers["User-Agent"] = "crypto-balance-tracker/1.0"
 # ── TRC20 ──────────────────────────────────────────────────────────────────────
 
 def get_trc_usdt(address: str) -> float | None:
-    """Return USDT balance on TRON (TRC20) via TronGrid account endpoint."""
+    """Return USDT TRC20 balance via TronGrid, fallback to TronScan."""
+    # --- TronGrid ---
     try:
         url = f"https://api.trongrid.io/v1/accounts/{address}"
         headers = {"Accept": "application/json"}
@@ -37,11 +38,24 @@ def get_trc_usdt(address: str) -> float | None:
         r = SESSION.get(url, headers=headers, timeout=15)
         r.raise_for_status()
         data = r.json()
-        # trc20 is a list of {contract_address: balance_str} dicts
-        for item in data.get("data", [{}])[0].get("trc20", []):
-            if USDT_TRC20.lower() in (k.lower() for k in item):
-                key = next(k for k in item if k.lower() == USDT_TRC20.lower())
-                return int(item[key]) / 1_000_000
+        accounts = data.get("data", [])
+        if accounts:
+            for item in accounts[0].get("trc20", []):
+                if USDT_TRC20 in item:
+                    return int(item[USDT_TRC20]) / 1_000_000
+            return 0.0
+    except Exception as e:
+        print(f"  TronGrid error: {e} — trying TronScan", file=sys.stderr)
+
+    # --- TronScan fallback ---
+    try:
+        url = "https://apilist.tronscanapi.com/api/account"
+        r = SESSION.get(url, params={"address": address}, timeout=15)
+        r.raise_for_status()
+        data = r.json()
+        for token in data.get("trc20token_balances", []):
+            if token.get("tokenId") == USDT_TRC20:
+                return int(token.get("balance", 0)) / 1_000_000
         return 0.0
     except Exception as e:
         print(f"  TRC USDT error for {address}: {e}", file=sys.stderr)
