@@ -28,24 +28,31 @@ SESSION.headers["User-Agent"] = "crypto-balance-tracker/1.0"
 # ── TRC20 ──────────────────────────────────────────────────────────────────────
 
 def get_trc_usdt(address: str) -> float | None:
-    """Return USDT TRC20 balance via TronGrid, fallback to TronScan."""
-    # --- TronGrid ---
-    try:
-        url = f"https://api.trongrid.io/v1/accounts/{address}"
-        headers = {"Accept": "application/json"}
-        if TRONGRID_API_KEY:
-            headers["TRON-PRO-API-KEY"] = TRONGRID_API_KEY
-        r = SESSION.get(url, headers=headers, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        accounts = data.get("data", [])
-        if accounts:
-            for item in accounts[0].get("trc20", []):
-                if USDT_TRC20 in item:
-                    return int(item[USDT_TRC20]) / 1_000_000
-            return 0.0
-    except Exception as e:
-        print(f"  TronGrid error: {e} — trying TronScan", file=sys.stderr)
+    """Return USDT TRC20 balance via TronGrid (3 retries), fallback to TronScan."""
+    headers = {"Accept": "application/json"}
+    if TRONGRID_API_KEY:
+        headers["TRON-PRO-API-KEY"] = TRONGRID_API_KEY
+
+    # --- TronGrid with retries ---
+    for attempt in range(3):
+        try:
+            url = f"https://api.trongrid.io/v1/accounts/{address}"
+            r = SESSION.get(url, headers=headers, timeout=15)
+            if r.status_code == 429:
+                time.sleep(3 * (attempt + 1))
+                continue
+            r.raise_for_status()
+            data = r.json()
+            accounts = data.get("data", [])
+            if accounts:
+                for item in accounts[0].get("trc20", []):
+                    if USDT_TRC20 in item:
+                        return int(item[USDT_TRC20]) / 1_000_000
+                return 0.0
+            break
+        except Exception as e:
+            print(f"  TronGrid attempt {attempt+1} error: {e}", file=sys.stderr)
+            time.sleep(2)
 
     # --- TronScan fallback ---
     try:
@@ -161,7 +168,7 @@ def collect():
             entry["trc"]["address"] = trc_addr
             entry["trc"]["USDT"] = bal
             print(f"  USDT(TRC20): {bal}")
-            time.sleep(0.5)
+            time.sleep(1.5)
 
         # ERC20
         erc_addr = w.get("erc", "").strip()
