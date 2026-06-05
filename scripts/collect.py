@@ -28,21 +28,21 @@ SESSION.headers["User-Agent"] = "crypto-balance-tracker/1.0"
 # ── TRC20 ──────────────────────────────────────────────────────────────────────
 
 def get_trc_usdt(address: str) -> float | None:
-    """Return USDT balance on TRON (TRC20) via TronScan API."""
+    """Return USDT balance on TRON (TRC20) via TronGrid API."""
     try:
-        url = "https://apilist.tronscanapi.com/api/account/tokens"
-        params = {"address": address, "start": 0, "limit": 200}
-        headers = {}
+        # TronGrid REST API — more reliable than TronScan
+        url = f"https://api.trongrid.io/v1/accounts/{address}/tokens"
+        params = {"token_id": USDT_TRC20, "limit": 1}
+        headers = {"Accept": "application/json"}
         if TRONGRID_API_KEY:
             headers["TRON-PRO-API-KEY"] = TRONGRID_API_KEY
         r = SESSION.get(url, params=params, headers=headers, timeout=15)
         r.raise_for_status()
         data = r.json()
-        for token in data.get("data", []):
-            if token.get("tokenId") == USDT_TRC20 or token.get("tokenAbbr") == "USDT":
-                balance = float(token.get("quantity", 0))
-                decimals = int(token.get("tokenDecimal", 6))
-                return balance / (10 ** decimals)
+        items = data.get("data", [])
+        if items:
+            bal = int(items[0].get("balance", 0))
+            return bal / 1_000_000  # USDT TRC20 has 6 decimals
         return 0.0
     except Exception as e:
         print(f"  TRC USDT error for {address}: {e}", file=sys.stderr)
@@ -80,8 +80,13 @@ def get_eth_balance(address: str) -> float | None:
         "address": address,
         "tag": "latest",
     })
-    if data and data.get("result"):
-        return int(data["result"]) / 1e18
+    try:
+        if data and data.get("status") == "1":
+            return int(data["result"]) / 1e18
+        if data:
+            print(f"  Etherscan ETH error: {data.get('message')} — {data.get('result')}", file=sys.stderr)
+    except (ValueError, TypeError) as e:
+        print(f"  Etherscan ETH parse error: {e}", file=sys.stderr)
     return None
 
 
@@ -93,8 +98,13 @@ def get_erc20_balance(address: str, contract: str, decimals: int) -> float | Non
         "address": address,
         "tag": "latest",
     })
-    if data and data.get("result"):
-        return int(data["result"]) / (10 ** decimals)
+    try:
+        if data and data.get("status") == "1":
+            return int(data["result"]) / (10 ** decimals)
+        if data:
+            print(f"  Etherscan token error: {data.get('message')} — {data.get('result')}", file=sys.stderr)
+    except (ValueError, TypeError) as e:
+        print(f"  Etherscan token parse error: {e}", file=sys.stderr)
     return None
 
 
