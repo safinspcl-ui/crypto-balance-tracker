@@ -132,9 +132,7 @@ def collect():
 
         # TRC20
         trc_addr = w.get("trc", "").strip()
-        if trc_addr and not trc_addr.startswith("TX"):
-            print(f"  Skipping TRC (placeholder address)")
-        elif trc_addr:
+        if trc_addr and len(trc_addr) >= 34 and trc_addr.startswith("T"):
             print(f"  TRC address: {trc_addr}")
             bal = get_trc_usdt(trc_addr)
             entry["trc"]["address"] = trc_addr
@@ -144,9 +142,7 @@ def collect():
 
         # ERC20
         erc_addr = w.get("erc", "").strip()
-        if erc_addr and erc_addr.startswith("0xX"):
-            print(f"  Skipping ERC (placeholder address)")
-        elif erc_addr:
+        if erc_addr and len(erc_addr) == 42 and erc_addr.startswith("0x"):
             print(f"  ERC address: {erc_addr}")
             entry["erc"]["address"] = erc_addr
 
