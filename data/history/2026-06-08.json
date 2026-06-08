@@ -1,13 +1,13 @@
 {
   "date": "2026-06-08",
-  "timestamp": "2026-06-08T04:45:04.926054+00:00",
+  "timestamp": "2026-06-08T14:40:49.377604+00:00",
   "wallets": [
     {
       "id": "trc_01",
       "label": "TRC #1",
       "trc": {
         "address": "TLHZzn9hNM4mbNMQrzG2mRYJJozr7iLHop",
-        "USDT": 3490.0
+        "USDT": 6165.0
       },
       "erc": {}
     },
@@ -16,7 +16,7 @@
       "label": "TRC #2",
       "trc": {
         "address": "TDqCXTvZVMFcDTgXjhQZYfKfVnvJBRq3qp",
-        "USDT": 3223.93758
+        "USDT": 4408.93758
       },
       "erc": {}
     },
@@ -25,7 +25,7 @@
       "label": "TRC #3",
       "trc": {
         "address": "TMU15JwuJbpA3PvGVcdGYt54pkVmdrM61w",
-        "USDT": 2741.18
+        "USDT": 6633.18
       },
       "erc": {}
     },
@@ -52,7 +52,7 @@
       "label": "TRC #6",
       "trc": {
         "address": "TQY5HZw1bXAD8yP4LzFxJY5swon9LvJVbD",
-        "USDT": 116882.503741
+        "USDT": 128642.503741
       },
       "erc": {}
     },
@@ -61,7 +61,7 @@
       "label": "TRC #7",
       "trc": {
         "address": "TGDXj4ZupTumjPvqtaKvXcDkmbw8BCD1sh",
-        "USDT": 23011.79
+        "USDT": 28468.79
       },
       "erc": {}
     },
@@ -70,7 +70,7 @@
       "label": "TRC #8",
       "trc": {
         "address": "TYCRLDYSei3JbJpcyJn9FDAmi1JVzfywiG",
-        "USDT": 111988.0
+        "USDT": 136519.0
       },
       "erc": {}
     },
@@ -79,7 +79,7 @@
       "label": "TRC #9",
       "trc": {
         "address": "TCto9LAWtAn4Q5GiGXsk6t8kUfczNgd9xX",
-        "USDT": 79579.477203
+        "USDT": 102605.217203
       },
       "erc": {}
     },
@@ -142,7 +142,7 @@
       "label": "TRC #16",
       "trc": {
         "address": "TVQFWb8p9jZGg1pEBQ8M8mYD95HwAruzaZ",
-        "USDT": 109645.0
+        "USDT": 66645.0
       },
       "erc": {}
     },
