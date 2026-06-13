@@ -1,6 +1,6 @@
 {
   "date": "2026-06-13",
-  "timestamp": "2026-06-13T00:00:54.268896+00:00",
+  "timestamp": "2026-06-13T10:13:04.316824+00:00",
   "wallets": [
     {
       "id": "trc_01",
@@ -43,7 +43,7 @@
       "label": "TRC #5",
       "trc": {
         "address": "TPGHFdtdRLP6VLXKBgth9G5pUbZNoGqgrc",
-        "USDT": 117474.602729
+        "USDT": 96475.812829
       },
       "erc": {}
     },
@@ -70,7 +70,7 @@
       "label": "TRC #8",
       "trc": {
         "address": "TYCRLDYSei3JbJpcyJn9FDAmi1JVzfywiG",
-        "USDT": 8952.0
+        "USDT": 11696.0
       },
       "erc": {}
     },
@@ -79,7 +79,7 @@
       "label": "TRC #9",
       "trc": {
         "address": "TCto9LAWtAn4Q5GiGXsk6t8kUfczNgd9xX",
-        "USDT": 209044.767203
+        "USDT": 209359.767203
       },
       "erc": {}
     },
