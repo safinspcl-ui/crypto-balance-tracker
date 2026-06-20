@@ -1,6 +1,6 @@
 {
   "date": "2026-06-20",
-  "timestamp": "2026-06-20T00:00:59.822123+00:00",
+  "timestamp": "2026-06-20T10:19:11.770598+00:00",
   "wallets": [
     {
       "id": "trc_01",
@@ -79,7 +79,7 @@
       "label": "TRC #9",
       "trc": {
         "address": "TCto9LAWtAn4Q5GiGXsk6t8kUfczNgd9xX",
-        "USDT": 102378.782098
+        "USDT": 112378.782098
       },
       "erc": {}
     },
@@ -262,7 +262,7 @@
       "erc": {
         "address": "0xf6F078965fF8FBB86BCE68671Abb9b9dDCB3F831",
         "ETH": 0.0,
-        "USDT": 7084.39,
+        "USDT": 7134.39,
         "USDC": 0.0
       }
     },
