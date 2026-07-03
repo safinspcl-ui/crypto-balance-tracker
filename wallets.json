@@ -33,6 +33,7 @@
     { "id": "erc_08", "label": "ERC #8",  "trc": "", "erc": "0xc8816DDe4D9eb9d742FdAC42732302ffA6A394fD" },
     { "id": "erc_09", "label": "ERC #9",  "trc": "", "erc": "0x7476da8A4ACa135B2619e115D573C4c4fDcF1338" },
     { "id": "erc_10", "label": "ERC #10", "trc": "", "erc": "0xAA0adA6E9a206b7Dd6639dA7f5b43a2f47e77EE0" },
-    { "id": "erc_11", "label": "ERC #11", "trc": "", "erc": "0x8a0De4384CfC38977B65a6FFd5A5874ff69a5bF0" }
+    { "id": "erc_11", "label": "ERC #11", "trc": "", "erc": "0x8a0De4384CfC38977B65a6FFd5A5874ff69a5bF0" },
+    { "id": "erc_12", "label": "ERC #12", "trc": "", "erc": "0x542B31376Cf50AED004f2519A6DB0F3b68F35484" }
   ]
 }
