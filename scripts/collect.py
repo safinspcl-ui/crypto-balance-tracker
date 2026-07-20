@@ -180,17 +180,17 @@ def collect():
             eth = get_eth_balance(erc_addr)
             entry["erc"]["ETH"] = eth
             print(f"  ETH: {eth}")
-            time.sleep(0.3)
+            time.sleep(1.0)
 
             usdt = get_erc20_balance(erc_addr, USDT_ERC20, 6)
             entry["erc"]["USDT"] = usdt
             print(f"  USDT(ERC20): {usdt}")
-            time.sleep(0.3)
+            time.sleep(1.0)
 
             usdc = get_erc20_balance(erc_addr, USDC_ERC20, 6)
             entry["erc"]["USDC"] = usdc
             print(f"  USDC(ERC20): {usdc}")
-            time.sleep(0.3)
+            time.sleep(1.0)
 
         results["wallets"].append(entry)
 
