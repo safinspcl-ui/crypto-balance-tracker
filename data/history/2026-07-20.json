@@ -1,6 +1,6 @@
 {
   "date": "2026-07-20",
-  "timestamp": "2026-07-20T05:33:42.002392+00:00",
+  "timestamp": "2026-07-20T05:43:12.241648+00:00",
   "wallets": [
     {
       "id": "trc_01",
@@ -218,8 +218,8 @@
       "erc": {
         "address": "0x19Fa4171fB3eAA85D645282467714989767F07EC",
         "ETH": 0.0,
-        "USDT": null,
-        "USDC": null
+        "USDT": 4750.85,
+        "USDC": 5609.93691
       }
     },
     {
@@ -229,8 +229,8 @@
       "erc": {
         "address": "0xdb866d7D40242589EFf79ad2854e980b613ceE79",
         "ETH": 1.761493293e-06,
-        "USDT": null,
-        "USDC": null
+        "USDT": 13428.534973,
+        "USDC": 5574.63147
       }
     },
     {
@@ -240,8 +240,8 @@
       "erc": {
         "address": "0xb74468D80E622333D47B79268a7F81e0C0CBEEd9",
         "ETH": 1e-09,
-        "USDT": null,
-        "USDC": null
+        "USDT": 2299.5,
+        "USDC": 0.0
       }
     },
     {
@@ -251,8 +251,8 @@
       "erc": {
         "address": "0xDbbf9ad0B3aa50764F12c6937c30E5A3C67aEc45",
         "ETH": 0.007816641564931856,
-        "USDT": null,
-        "USDC": null
+        "USDT": 32000.008645,
+        "USDC": 0.0
       }
     },
     {
@@ -262,8 +262,8 @@
       "erc": {
         "address": "0xf6F078965fF8FBB86BCE68671Abb9b9dDCB3F831",
         "ETH": 1e-09,
-        "USDT": null,
-        "USDC": null
+        "USDT": 66875.516489,
+        "USDC": 0.0
       }
     },
     {
@@ -273,8 +273,8 @@
       "erc": {
         "address": "0x24Fbeb082E60B3bF24Ff8F08dA211b95D3d92d6B",
         "ETH": 0.002565135743039613,
-        "USDT": null,
-        "USDC": null
+        "USDT": 0.023224,
+        "USDC": 0.0
       }
     },
     {
@@ -284,8 +284,8 @@
       "erc": {
         "address": "0xc8816DDe4D9eb9d742FdAC42732302ffA6A394fD",
         "ETH": 0.063422553120517,
-        "USDT": null,
-        "USDC": null
+        "USDT": 0.0,
+        "USDC": 0.0
       }
     },
     {
@@ -295,8 +295,8 @@
       "erc": {
         "address": "0x7476da8A4ACa135B2619e115D573C4c4fDcF1338",
         "ETH": 0.0,
-        "USDT": null,
-        "USDC": null
+        "USDT": 0.0,
+        "USDC": 0.0
       }
     },
     {
@@ -306,8 +306,8 @@
       "erc": {
         "address": "0xAA0adA6E9a206b7Dd6639dA7f5b43a2f47e77EE0",
         "ETH": 0.07317546264870758,
-        "USDT": null,
-        "USDC": null
+        "USDT": 7.906362,
+        "USDC": 0.0
       }
     },
     {
@@ -317,7 +317,7 @@
       "erc": {
         "address": "0x8a0De4384CfC38977B65a6FFd5A5874ff69a5bF0",
         "ETH": 0.0,
-        "USDT": null,
+        "USDT": 0.0,
         "USDC": 0.0
       }
     },
@@ -327,8 +327,8 @@
       "trc": {},
       "erc": {
         "address": "0x542B31376Cf50AED004f2519A6DB0F3b68F35484",
-        "ETH": null,
-        "USDT": null,
+        "ETH": 0.009682837453245708,
+        "USDT": 37630.015175,
         "USDC": 0.0
       }
     }
