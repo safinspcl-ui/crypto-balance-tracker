@@ -36,4 +36,5 @@ jobs:
           git add data/
           git diff --cached --quiet && echo "No changes" || \
             git commit -m "chore: balance snapshot $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
