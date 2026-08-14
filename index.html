@@ -231,10 +231,11 @@ async function init() {
   }
 
   // Totals bar
+  const totStable     = totUsdt  + totUsdc;
+  const prevTotStable = prevTotUsdt + prevTotUsdc;
   const chips = [
-    { label: "USDT (TRC20 + ERC20)", val: totUsdt, prev: prevTotUsdt, unit: "USDT", d: 2 },
-    { label: "USDC ERC20",           val: totUsdc, prev: prevTotUsdc, unit: "USDC", d: 2 },
-    { label: "ETH ERC20",            val: totEth,  prev: prevTotEth,  unit: "ETH",  d: 4 },
+    { label: "USDT + USDC (все сети)", val: totStable, prev: prevTotStable, unit: "USD", d: 2 },
+    { label: "ETH ERC20",              val: totEth,    prev: prevTotEth,    unit: "ETH", d: 4 },
   ];
   document.getElementById("totals").innerHTML = chips.map(c => {
     const diff = prevDate ? (c.val - c.prev) : null;
