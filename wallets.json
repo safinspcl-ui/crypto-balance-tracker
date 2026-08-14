@@ -22,6 +22,11 @@
     { "id": "trc_19", "label": "TRC #19", "trc": "THSv9tbop8K8JHrDrQCwieEnn3qzR33kb3", "erc": "" },
     { "id": "trc_20", "label": "TRC #20", "trc": "TMJJCdxvw8woPXrPpsmLBaYf1X2txqGeHm", "erc": "" },
     { "id": "trc_21", "label": "TRC #21", "trc": "TS5Rivwscmp912j5NtHnH45wQy6xSnGDjL",  "erc": "" },
+    { "id": "trc_22", "label": "TRC #22", "trc": "TPeYGUut7meHmTYvPqbFWXPEhAbuPPzmeu", "erc": "" },
+    { "id": "trc_23", "label": "TRC #23", "trc": "THfRGSkzk8gnbiK76EqPDBoBWMTLjsN7bN", "erc": "" },
+    { "id": "trc_24", "label": "TRC #24", "trc": "TAjyZibAZ6pwDS8t4aqb9H5C6juQLdoXS8", "erc": "" },
+    { "id": "trc_25", "label": "TRC #25", "trc": "TDn6B5ZhZcssaaPF7G7Ctc56nEYbbFZsr6", "erc": "" },
+    { "id": "trc_26", "label": "TRC #26", "trc": "TKMkJNucRxXuEYu89QrE499nAvgCU9iYfL", "erc": "" },
 
     { "id": "erc_01", "label": "ERC #1",  "trc": "", "erc": "0xF012642Bc0236f8449a2539eB1a2724A011c5315" },
     { "id": "erc_02", "label": "ERC #2",  "trc": "", "erc": "0x19Fa4171fB3eAA85D645282467714989767F07EC" },
