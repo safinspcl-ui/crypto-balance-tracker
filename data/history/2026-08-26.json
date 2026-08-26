@@ -1,0 +1,381 @@
+{
+  "date": "2026-08-26",
+  "timestamp": "2026-08-26T00:01:05.809978+00:00",
+  "wallets": [
+    {
+      "id": "trc_01",
+      "label": "TRC #1",
+      "trc": {
+        "address": "TLHZzn9hNM4mbNMQrzG2mRYJJozr7iLHop",
+        "USDT": 84404.42
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_02",
+      "label": "TRC #2",
+      "trc": {
+        "address": "TDqCXTvZVMFcDTgXjhQZYfKfVnvJBRq3qp",
+        "USDT": 29712.947609
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_03",
+      "label": "TRC #3",
+      "trc": {
+        "address": "TMU15JwuJbpA3PvGVcdGYt54pkVmdrM61w",
+        "USDT": 55019.97
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_04",
+      "label": "TRC #4",
+      "trc": {
+        "address": "TEBXqjSvxDaZfD48RPEv36NW3VUoHERMkk",
+        "USDT": 6724.03
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_05",
+      "label": "TRC #5",
+      "trc": {
+        "address": "TPGHFdtdRLP6VLXKBgth9G5pUbZNoGqgrc",
+        "USDT": 1725.575208
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_06",
+      "label": "TRC #6",
+      "trc": {
+        "address": "TQY5HZw1bXAD8yP4LzFxJY5swon9LvJVbD",
+        "USDT": 4935.940173
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_07",
+      "label": "TRC #7",
+      "trc": {
+        "address": "TGDXj4ZupTumjPvqtaKvXcDkmbw8BCD1sh",
+        "USDT": 47905.938198
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_08",
+      "label": "TRC #8",
+      "trc": {
+        "address": "TYCRLDYSei3JbJpcyJn9FDAmi1JVzfywiG",
+        "USDT": 37011.260559
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_09",
+      "label": "TRC #9",
+      "trc": {
+        "address": "TCto9LAWtAn4Q5GiGXsk6t8kUfczNgd9xX",
+        "USDT": 21531.556885
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_10",
+      "label": "TRC #10",
+      "trc": {
+        "address": "TLhfqos474tTAwCWn33GonPyj9TRpRQ997",
+        "USDT": 22800.144185
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_11",
+      "label": "TRC #11",
+      "trc": {
+        "address": "TQbUqZSZGscbYUsbcF99ZoDFdiQLsXxvTm",
+        "USDT": 5110.976772
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_12",
+      "label": "TRC #12",
+      "trc": {
+        "address": "TC5mabQddVBNHDQk6fBzLaAp9oXfVCjF71",
+        "USDT": 107132.264301
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_13",
+      "label": "TRC #13",
+      "trc": {
+        "address": "TFjyQw4BJsge4nnPhtHMqpFoChowEcTc2g",
+        "USDT": 149.877599
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_14",
+      "label": "TRC #14",
+      "trc": {
+        "address": "TSd8wPnfKrxRjQ49WNwj9awEH4RoW3JtCf",
+        "USDT": 26111.44314
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_15",
+      "label": "TRC #15",
+      "trc": {
+        "address": "TAPZ5SLbGWu5G9krbqK81HXoZpSmJ7eoRS",
+        "USDT": 32804.52101
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_16",
+      "label": "TRC #16",
+      "trc": {
+        "address": "TVQFWb8p9jZGg1pEBQ8M8mYD95HwAruzaZ",
+        "USDT": 931.090658
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_17",
+      "label": "TRC #17",
+      "trc": {
+        "address": "TWF5LbM1fJktmDs2e563QWL3ouDNi4Wm5P",
+        "USDT": 12.336492
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_17b",
+      "label": "TRC #17b",
+      "trc": {
+        "address": "TMCFupMcZYaApfhr8ayZJaPh6bj6Tt1E1J",
+        "USDT": 394.301601
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_18",
+      "label": "TRC #18",
+      "trc": {
+        "address": "TKYPAyB5fQoHwfXLEEt6yDEaLGeAzd5LRS",
+        "USDT": 107.655569
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_19",
+      "label": "TRC #19",
+      "trc": {
+        "address": "THSv9tbop8K8JHrDrQCwieEnn3qzR33kb3",
+        "USDT": 1080.646163
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_20",
+      "label": "TRC #20",
+      "trc": {
+        "address": "TMJJCdxvw8woPXrPpsmLBaYf1X2txqGeHm",
+        "USDT": 1732.665307
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_21",
+      "label": "TRC #21",
+      "trc": {
+        "address": "TS5Rivwscmp912j5NtHnH45wQy6xSnGDjL",
+        "USDT": 0.020604
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_22",
+      "label": "TRC #22",
+      "trc": {
+        "address": "TPeYGUut7meHmTYvPqbFWXPEhAbuPPzmeu",
+        "USDT": 58000.0
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_23",
+      "label": "TRC #23",
+      "trc": {
+        "address": "THfRGSkzk8gnbiK76EqPDBoBWMTLjsN7bN",
+        "USDT": 182300.0
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_24",
+      "label": "TRC #24",
+      "trc": {
+        "address": "TAjyZibAZ6pwDS8t4aqb9H5C6juQLdoXS8",
+        "USDT": 115000.0
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_25",
+      "label": "TRC #25",
+      "trc": {
+        "address": "TDn6B5ZhZcssaaPF7G7Ctc56nEYbbFZsr6",
+        "USDT": 100000.0
+      },
+      "erc": {}
+    },
+    {
+      "id": "trc_26",
+      "label": "TRC #26",
+      "trc": {
+        "address": "TKMkJNucRxXuEYu89QrE499nAvgCU9iYfL",
+        "USDT": 100000.0
+      },
+      "erc": {}
+    },
+    {
+      "id": "erc_01",
+      "label": "ERC #1",
+      "trc": {},
+      "erc": {
+        "address": "0xF012642Bc0236f8449a2539eB1a2724A011c5315",
+        "ETH": 0.0,
+        "USDT": 7049.488757,
+        "USDC": 2994.18265
+      }
+    },
+    {
+      "id": "erc_02",
+      "label": "ERC #2",
+      "trc": {},
+      "erc": {
+        "address": "0x19Fa4171fB3eAA85D645282467714989767F07EC",
+        "ETH": 0.0,
+        "USDT": 4750.85,
+        "USDC": 33.04602
+      }
+    },
+    {
+      "id": "erc_03",
+      "label": "ERC #3",
+      "trc": {},
+      "erc": {
+        "address": "0xdb866d7D40242589EFf79ad2854e980b613ceE79",
+        "ETH": 1.761493293e-06,
+        "USDT": 27.888363,
+        "USDC": 5574.63147
+      }
+    },
+    {
+      "id": "erc_04",
+      "label": "ERC #4",
+      "trc": {},
+      "erc": {
+        "address": "0xb74468D80E622333D47B79268a7F81e0C0CBEEd9",
+        "ETH": 2e-09,
+        "USDT": 6715.5,
+        "USDC": 500.0
+      }
+    },
+    {
+      "id": "erc_05",
+      "label": "ERC #5",
+      "trc": {},
+      "erc": {
+        "address": "0xDbbf9ad0B3aa50764F12c6937c30E5A3C67aEc45",
+        "ETH": 0.007767306116344659,
+        "USDT": 9409.773572,
+        "USDC": 20000.0
+      }
+    },
+    {
+      "id": "erc_06",
+      "label": "ERC #6",
+      "trc": {},
+      "erc": {
+        "address": "0xf6F078965fF8FBB86BCE68671Abb9b9dDCB3F831",
+        "ETH": 0.07274425088559458,
+        "USDT": 21298.782522,
+        "USDC": 13650.0
+      }
+    },
+    {
+      "id": "erc_07",
+      "label": "ERC #7",
+      "trc": {},
+      "erc": {
+        "address": "0x24Fbeb082E60B3bF24Ff8F08dA211b95D3d92d6B",
+        "ETH": 0.002565135743039613,
+        "USDT": 0.023224,
+        "USDC": 0.0
+      }
+    },
+    {
+      "id": "erc_08",
+      "label": "ERC #8",
+      "trc": {},
+      "erc": {
+        "address": "0xc8816DDe4D9eb9d742FdAC42732302ffA6A394fD",
+        "ETH": 0.063422553120517,
+        "USDT": 0.0,
+        "USDC": 0.0
+      }
+    },
+    {
+      "id": "erc_09",
+      "label": "ERC #9",
+      "trc": {},
+      "erc": {
+        "address": "0x7476da8A4ACa135B2619e115D573C4c4fDcF1338",
+        "ETH": 0.0,
+        "USDT": 0.0,
+        "USDC": 0.0
+      }
+    },
+    {
+      "id": "erc_10",
+      "label": "ERC #10",
+      "trc": {},
+      "erc": {
+        "address": "0xAA0adA6E9a206b7Dd6639dA7f5b43a2f47e77EE0",
+        "ETH": 1.3214245948442e-05,
+        "USDT": 7.906362,
+        "USDC": 0.0
+      }
+    },
+    {
+      "id": "erc_11",
+      "label": "ERC #11",
+      "trc": {},
+      "erc": {
+        "address": "0x8a0De4384CfC38977B65a6FFd5A5874ff69a5bF0",
+        "ETH": 0.0,
+        "USDT": 0.0,
+        "USDC": 0.0
+      }
+    },
+    {
+      "id": "erc_12",
+      "label": "ERC #12",
+      "trc": {},
+      "erc": {
+        "address": "0x542B31376Cf50AED004f2519A6DB0F3b68F35484",
+        "ETH": 0.008186100195587282,
+        "USDT": 4980.051598,
+        "USDC": 0.0
+      }
+    }
+  ]
+}
