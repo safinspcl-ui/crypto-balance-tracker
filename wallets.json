@@ -27,6 +27,7 @@
     { "id": "trc_24", "label": "TRC #24", "trc": "TAjyZibAZ6pwDS8t4aqb9H5C6juQLdoXS8", "erc": "" },
     { "id": "trc_25", "label": "TRC #25", "trc": "TDn6B5ZhZcssaaPF7G7Ctc56nEYbbFZsr6", "erc": "" },
     { "id": "trc_26", "label": "TRC #26", "trc": "TKMkJNucRxXuEYu89QrE499nAvgCU9iYfL", "erc": "" },
+    { "id": "trc_27", "label": "TRC #27", "trc": "TFbkxjfvWfVimjZmk1yvkN8jW4HiW9yKkT", "erc": "" },
 
     { "id": "erc_01", "label": "ERC #1",  "trc": "", "erc": "0xF012642Bc0236f8449a2539eB1a2724A011c5315" },
     { "id": "erc_02", "label": "ERC #2",  "trc": "", "erc": "0x19Fa4171fB3eAA85D645282467714989767F07EC" },
@@ -39,6 +40,7 @@
     { "id": "erc_09", "label": "ERC #9",  "trc": "", "erc": "0x7476da8A4ACa135B2619e115D573C4c4fDcF1338" },
     { "id": "erc_10", "label": "ERC #10", "trc": "", "erc": "0xAA0adA6E9a206b7Dd6639dA7f5b43a2f47e77EE0" },
     { "id": "erc_11", "label": "ERC #11", "trc": "", "erc": "0x8a0De4384CfC38977B65a6FFd5A5874ff69a5bF0" },
-    { "id": "erc_12", "label": "ERC #12", "trc": "", "erc": "0x542B31376Cf50AED004f2519A6DB0F3b68F35484" }
+    { "id": "erc_12", "label": "ERC #12", "trc": "", "erc": "0x542B31376Cf50AED004f2519A6DB0F3b68F35484" },
+    { "id": "erc_13", "label": "ERC #13", "trc": "", "erc": "0x93a332a554c3286d34592544b307dfe620e4ae96" }
   ]
 }
