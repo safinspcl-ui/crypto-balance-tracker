@@ -20,6 +20,7 @@
       --usdc:    #2775ca;
       --eth:     #627eea;
       --tron:    #ff3e3e;
+      --trx:     #ff3e3e;
     }
 
     body {
@@ -104,6 +105,7 @@
     .coin-usdt .coin-dot { background: var(--usdt); }
     .coin-usdc .coin-dot { background: var(--usdc); }
     .coin-eth  .coin-dot { background: var(--eth); }
+    .coin-trx  .coin-dot { background: var(--trx); }
 
     .val-zero { color: var(--muted); font-weight: 400; }
     .val-err  { color: var(--red);   font-size: 11px; font-weight: 400; }
@@ -203,19 +205,22 @@ async function init() {
 
   // Build rows + totals
   const rows = [];
-  let totUsdt = 0, totUsdc = 0, totEth = 0;
-  let prevTotUsdt = 0, prevTotUsdc = 0, prevTotEth = 0;
+  let totUsdt = 0, totUsdc = 0, totEth = 0, totTrx = 0;
+  let prevTotUsdt = 0, prevTotUsdc = 0, prevTotEth = 0, prevTotTrx = 0;
 
   for (const w of snap.wallets || []) {
     const label = labelMap[w.id] || w.label || w.id;
     const prev  = prevMap[w.id];
 
     if (w.trc?.address) {
-      const cur  = w.trc.USDT;
-      const prv  = prev?.trc?.USDT ?? null;
-      rows.push({ label, addr: w.trc.address, chain: "TRC20", coin: "USDT", val: cur, prev: prv });
-      totUsdt     += cur  ?? 0;
-      prevTotUsdt += prv  ?? 0;
+      const curUsdt = w.trc.USDT;
+      const prvUsdt = prev?.trc?.USDT ?? null;
+      const curTrx  = w.trc.TRX;
+      const prvTrx  = prev?.trc?.TRX ?? null;
+      rows.push({ label, addr: w.trc.address, chain: "TRC20", coin: "USDT", val: curUsdt, prev: prvUsdt });
+      rows.push({ label, addr: w.trc.address, chain: "TRC20", coin: "TRX",  val: curTrx,  prev: prvTrx  });
+      totUsdt     += curUsdt ?? 0;  prevTotUsdt += prvUsdt ?? 0;
+      totTrx      += curTrx  ?? 0;  prevTotTrx  += prvTrx  ?? 0;
     }
     if (w.erc?.address) {
       const curEth  = w.erc.ETH,  prvEth  = prev?.erc?.ETH  ?? null;
@@ -236,6 +241,7 @@ async function init() {
   const chips = [
     { label: "USDT + USDC (все сети)", val: totStable, prev: prevTotStable, unit: "USD", d: 2 },
     { label: "ETH ERC20",              val: totEth,    prev: prevTotEth,    unit: "ETH", d: 4 },
+    { label: "TRX TRC20",              val: totTrx,    prev: prevTotTrx,    unit: "TRX", d: 2 },
   ];
   document.getElementById("totals").innerHTML = chips.map(c => {
     const diff = prevDate ? (c.val - c.prev) : null;
@@ -254,11 +260,11 @@ async function init() {
   }).join("");
 
   // Table
-  const coinCls = { USDT: "coin-usdt", USDC: "coin-usdc", ETH: "coin-eth" };
+  const coinCls = { USDT: "coin-usdt", USDC: "coin-usdc", ETH: "coin-eth", TRX: "coin-trx" };
   const short = a => a ? a.slice(0, 8) + "…" + a.slice(-6) : "";
 
   document.getElementById("tbody").innerHTML = rows.map((r, i) => {
-    const decimals = r.coin === "ETH" ? 6 : 2;
+    const decimals = r.coin === "ETH" ? 6 : 2;  // TRX also 2 decimals
     const fval = r.val == null
       ? `<span class="val-err">ошибка</span>`
       : r.val === 0

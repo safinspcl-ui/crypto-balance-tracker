@@ -27,8 +27,8 @@ SESSION.headers["User-Agent"] = "crypto-balance-tracker/1.0"
 
 # ── TRC20 ──────────────────────────────────────────────────────────────────────
 
-def get_trc_usdt(address: str) -> float | None:
-    """Return USDT TRC20 balance via TronGrid (3 retries), fallback to TronScan."""
+def get_trc_balances(address: str) -> dict:
+    """Return TRX and USDT TRC20 balances via TronGrid (3 retries), fallback to TronScan."""
     headers = {"Accept": "application/json"}
     if TRONGRID_API_KEY:
         headers["TRON-PRO-API-KEY"] = TRONGRID_API_KEY
@@ -45,10 +45,14 @@ def get_trc_usdt(address: str) -> float | None:
             data = r.json()
             accounts = data.get("data", [])
             if accounts:
-                for item in accounts[0].get("trc20", []):
+                acc = accounts[0]
+                trx = int(acc.get("balance", 0)) / 1_000_000
+                usdt = 0.0
+                for item in acc.get("trc20", []):
                     if USDT_TRC20 in item:
-                        return int(item[USDT_TRC20]) / 1_000_000
-                return 0.0
+                        usdt = int(item[USDT_TRC20]) / 1_000_000
+                        break
+                return {"TRX": trx, "USDT": usdt}
             break
         except Exception as e:
             print(f"  TronGrid attempt {attempt+1} error: {e}", file=sys.stderr)
@@ -60,13 +64,16 @@ def get_trc_usdt(address: str) -> float | None:
         r = SESSION.get(url, params={"address": address}, timeout=15)
         r.raise_for_status()
         data = r.json()
+        trx = int(data.get("balance", 0)) / 1_000_000
+        usdt = 0.0
         for token in data.get("trc20token_balances", []):
             if token.get("tokenId") == USDT_TRC20:
-                return int(token.get("balance", 0)) / 1_000_000
-        return 0.0
+                usdt = int(token.get("balance", 0)) / 1_000_000
+                break
+        return {"TRX": trx, "USDT": usdt}
     except Exception as e:
-        print(f"  TRC USDT error for {address}: {e}", file=sys.stderr)
-        return None
+        print(f"  TRC error for {address}: {e}", file=sys.stderr)
+        return {"TRX": None, "USDT": None}
 
 
 # ── ERC20 ─────────────────────────────────────────────────────────────────────
@@ -165,10 +172,12 @@ def collect():
         trc_addr = w.get("trc", "").strip()
         if trc_addr and len(trc_addr) >= 34 and trc_addr.startswith("T"):
             print(f"  TRC address: {trc_addr}")
-            bal = get_trc_usdt(trc_addr)
+            bals = get_trc_balances(trc_addr)
             entry["trc"]["address"] = trc_addr
-            entry["trc"]["USDT"] = bal
-            print(f"  USDT(TRC20): {bal}")
+            entry["trc"]["TRX"]  = bals["TRX"]
+            entry["trc"]["USDT"] = bals["USDT"]
+            print(f"  TRX:         {bals['TRX']}")
+            print(f"  USDT(TRC20): {bals['USDT']}")
             time.sleep(1.5)
 
         # ERC20
