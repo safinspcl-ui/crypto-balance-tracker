@@ -1,6 +1,6 @@
 {
   "date": "2026-11-26",
-  "timestamp": "2026-11-26T00:01:08.636310+00:00",
+  "timestamp": "2026-11-26T05:38:03.883129+00:00",
   "wallets": [
     {
       "id": "trc_01",
@@ -17,8 +17,8 @@
       "label": "TRC #2",
       "trc": {
         "address": "TDqCXTvZVMFcDTgXjhQZYfKfVnvJBRq3qp",
-        "TRX": 13.227043,
-        "USDT": 41964.46335
+        "TRX": 13.227055,
+        "USDT": 42114.46335
       },
       "erc": {}
     },
